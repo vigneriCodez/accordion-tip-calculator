@@ -1,4 +1,7 @@
+import React from 'react';
+
 import Accordion from './Accordion';
+import TipCalculatorControl from './TipCalculatorControl';
 
 const faqs = [
 	{
@@ -20,6 +23,7 @@ function App() {
 		<div className='App'>
 			<>
 				<Accordion data={faqs} />
+				<TipCalculatorControl />
 			</>
 		</div>
 	);

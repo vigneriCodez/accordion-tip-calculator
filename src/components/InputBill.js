@@ -1,15 +1,16 @@
 import React from 'react';
 
-function InputBill({ billAmt, setBillAmt }) {
+function InputBill({ billAmt, onSetBillAmt }) {
 	return (
 		<>
-			<span>How much was the bill?</span>
+			<label>How much was the bill?</label>
 			<input
 				id='bill'
 				name='bill'
 				type='number'
+				placeholder='Bill Amount...'
 				value={billAmt}
-				onChange={(e) => setBillAmt(Number(e.target.value))}
+				onChange={(e) => onSetBillAmt(Number(e.target.value))}
 			/>
 		</>
 	);

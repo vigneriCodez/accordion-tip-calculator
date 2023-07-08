@@ -6,30 +6,38 @@ import CalcDisplay from './CalcDisplay';
 import ResetButton from './ResetButton';
 
 function TipCalculatorControl() {
-	const [billAmt, setBillAmt] = useState(0);
-	const [tip1Amt, setTip1Amt] = useState(5);
-	const [tip2Amt, setTip2Amt] = useState(5);
+	const [billAmt, setBillAmt] = useState('');
+	const [tip1Amt, setTip1Amt] = useState(10);
+	const [tip2Amt, setTip2Amt] = useState(10);
 
 	const handleResetPress = () => {
-		setBillAmt(0);
-		setTip1Amt(5);
-		setTip2Amt(5);
+		setBillAmt('');
+		setTip1Amt(10);
+		setTip2Amt(10);
 	};
 
 	return (
 		<>
-			<div>the Tip Calculator:</div>
-			<InputBill billAmt={billAmt} setBillAmt={setBillAmt} />
-
-			<TipService tipAmt={tip1Amt} setTipAmt={setTip1Amt}>
-				<p>How did you like the service?</p>
-			</TipService>
-
-			<TipService tipAmt={tip2Amt} setTipAmt={setTip2Amt}>
-				<p>How did your friend like the service?</p>
-			</TipService>
-			<CalcDisplay billAmt={billAmt} tip1Amt={tip1Amt} tip2Amt={tip2Amt} />
-			<ResetButton onClick={handleResetPress} />
+			<div>
+				<h1>the Tip Calculator:</h1>
+				<InputBill billAmt={billAmt} onSetBillAmt={setBillAmt} />
+				<TipService tipAmt={tip1Amt} setTipAmt={setTip1Amt}>
+					How did you like the service?
+				</TipService>
+				<TipService tipAmt={tip2Amt} setTipAmt={setTip2Amt}>
+					How did your friend like the service?
+				</TipService>
+				{billAmt > 0 && (
+					<>
+						<CalcDisplay
+							billAmt={billAmt}
+							tip1Amt={tip1Amt}
+							tip2Amt={tip2Amt}
+						/>
+						<ResetButton onReset={handleResetPress} />
+					</>
+				)}
+			</div>
 		</>
 	);
 }

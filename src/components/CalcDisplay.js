@@ -1,11 +1,19 @@
 import React from 'react';
 
-function CalcDisplay() {
+function CalcDisplay({ billAmt, tip1Amt, tip2Amt }) {
+	const newTipTotal = tip1Amt + tip2Amt;
+
+	const newTipAmt = (billAmt * newTipTotal) / 100;
+
+	const newTotal = newTipAmt + billAmt;
+
 	return (
 		<>
 			<div>
-				<h2>You pay $XX total ($XX + $XX tip)</h2>
-				<h3>$XX Each</h3>
+				<h2>
+					You pay ${newTotal} total (${billAmt} + ${newTipAmt} tip)
+				</h2>
+				<h3>${newTotal / 2} Each</h3>
 			</div>
 		</>
 	);
